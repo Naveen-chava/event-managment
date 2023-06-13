@@ -1,0 +1,1079 @@
+{
+	"info": {
+		"_postman_id": "2fc3099a-0b7a-4e16-93eb-3e2e33b821ff",
+		"name": "Event Management System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11698287"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\": \"9999999990\",\r\n    \"password\": \"password\",\r\n    \"first_name\": \"first_name\",\r\n    \"last_name\": \"last_name\",\r\n    \"email\": \"naveen1@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/account/signup",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"account",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User Profile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\": \"9999999990\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/account/userprofile",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"account",
+								"userprofile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Staff Profile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\": \"9876543210\",\r\n    \"is_admin\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/account/staffprofile",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"account",
+								"staffprofile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\": \"9876543210\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/account/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Event",
+			"item": [
+				{
+					"name": "Create Event",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token a335b7592b63c26237a7ed2feb063be10232f8ab",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"test event 4\",\r\n    \"description\": \"description\",\r\n    \"event_date\": 1687076362,\r\n    \"type\": \"ONLINE\",\r\n    \"max_seats\": 20,\r\n    \"status\": \"CREATED\",\r\n\r\n    \"location\": {\r\n        \"name\": \"Nellore\",\r\n        \"address\": \"Nellore\",\r\n        \"city\": \"Nellore\",\r\n        \"state\": \"Andhra Pradesh\"\r\n    },\r\n\r\n    \"booking_windows\": [\r\n        {\"booking_open_from\": 1684299000, \"booking_open_until\": 1684385400},\r\n        {\"booking_open_from\": 1684471800, \"booking_open_until\": 1684497000}\r\n        ],\r\n    \r\n    \"catgeories\": [\"SPORTS\"],\r\n    \"price_plans\": [\r\n        {\"price\": 100, \"type\": \"ECONOMY\"},\r\n        {\"price\": 200, \"type\": \"PREMIUM\"}\r\n    ]\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/event/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"event",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Event - All Fields",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token a335b7592b63c26237a7ed2feb063be10232f8ab",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"test event\",\r\n    \"description\": \"description\",\r\n    \"event_date\": 1687076362,\r\n    \"type\": \"ONLINE\",\r\n    \"max_seats\": 20,\r\n    \"status\": \"CREATED\",\r\n\r\n    \"location\": {\r\n        \"name\": \"Nellore\",\r\n        \"address\": \"Nellore\",\r\n        \"city\": \"Nellore\",\r\n        \"state\": \"Andhra Pradesh\"\r\n    },\r\n\r\n    \"booking_windows\": [\r\n        {\"booking_open_from\": 1684299000, \"booking_open_until\": 1684385400},\r\n        {\"booking_open_from\": 1684471800, \"booking_open_until\": 1684497000}\r\n        ],\r\n    \r\n    \"catgeories\": [\"SPORTS\"],\r\n    \"price_plans\": [\r\n        {\"price\": 100, \"type\": \"ECONOMY\"},\r\n        {\"price\": 200, \"type\": \"PREMIUM\"}\r\n    ]\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/event/event",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"event",
+										"event"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 12 Jun 2023 18:25:48 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.10"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "656"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"external_id\": \"cf2d0092-d20b-4232-a015-5ce10146a56c\",\n    \"created\": \"2023-06-12T18:25:48.881892Z\",\n    \"modified\": \"2023-06-12T18:25:48.887340Z\",\n    \"name\": \"test event\",\n    \"description\": \"description\",\n    \"event_date\": \"2023-06-18T08:19:22Z\",\n    \"type\": \"ONLINE\",\n    \"max_seats\": 20,\n    \"status\": \"CREATED\",\n    \"location\": {\n        \"name\": \"Nellore\",\n        \"address\": \"Nellore\",\n        \"city\": \"Nellore\",\n        \"state\": \"Andhra Pradesh\"\n    },\n    \"price_plan\": [\n        {\n            \"price\": 100,\n            \"type\": \"ECONOMY\"\n        },\n        {\n            \"price\": 200,\n            \"type\": \"PREMIUM\"\n        }\n    ],\n    \"booking_windows\": [\n        {\n            \"booking_open_from\": \"2023-05-17T04:50:00Z\",\n            \"booking_open_until\": \"2023-05-18T04:50:00Z\"\n        },\n        {\n            \"booking_open_from\": \"2023-05-19T04:50:00Z\",\n            \"booking_open_until\": \"2023-05-19T11:50:00Z\"\n        }\n    ],\n    \"categories\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All Events",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token a335b7592b63c26237a7ed2feb063be10232f8ab",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/event/event",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"event",
+								"event"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Events - Admin",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token a335b7592b63c26237a7ed2feb063be10232f8ab",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/event/event",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"event",
+										"event"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 13 Jun 2023 03:28:39 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.10"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "658"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"external_id\": \"cf2d0092-d20b-4232-a015-5ce10146a56c\",\n        \"created\": \"2023-06-12T18:25:48.881892Z\",\n        \"modified\": \"2023-06-12T18:25:48.887340Z\",\n        \"name\": \"test event\",\n        \"description\": \"description\",\n        \"event_date\": \"2023-06-18T08:19:22Z\",\n        \"type\": \"ONLINE\",\n        \"max_seats\": 20,\n        \"status\": \"CREATED\",\n        \"location\": {\n            \"name\": \"Nellore\",\n            \"address\": \"Nellore\",\n            \"city\": \"Nellore\",\n            \"state\": \"Andhra Pradesh\"\n        },\n        \"price_plan\": [\n            {\n                \"price\": 100,\n                \"type\": \"ECONOMY\"\n            },\n            {\n                \"price\": 200,\n                \"type\": \"PREMIUM\"\n            }\n        ],\n        \"booking_windows\": [\n            {\n                \"booking_open_from\": \"2023-05-17T04:50:00Z\",\n                \"booking_open_until\": \"2023-05-18T04:50:00Z\"\n            },\n            {\n                \"booking_open_from\": \"2023-05-19T04:50:00Z\",\n                \"booking_open_until\": \"2023-05-19T11:50:00Z\"\n            }\n        ],\n        \"categories\": []\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Update Event",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token a335b7592b63c26237a7ed2feb063be10232f8ab",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"test event\",\r\n    \"description\": \"description\",\r\n    \"event_date\": 1687076362,\r\n    \"type\": \"ONLINE\",\r\n    \"max_seats\": 20,\r\n    \"status\": \"CREATED\",\r\n\r\n    \"location\": {\r\n        \"name\": \"Nellore\",\r\n        \"address\": \"Nellore\",\r\n        \"city\": \"Nellore\",\r\n        \"state\": \"Andhra Pradesh\"\r\n    },\r\n\r\n    \"booking_windows\": [\r\n        {\"booking_open_from\": 1684299000, \"booking_open_until\": 1684385400},\r\n        {\"booking_open_from\": 1684471800, \"booking_open_until\": 1684497000}\r\n        ],\r\n    \r\n    \"categories\": [\"SPORTS\"],\r\n    \"price_plans\": [\r\n        {\"price\": 100, \"type\": \"ECONOMY\"},\r\n        {\"price\": 200, \"type\": \"PREMIUM\"}\r\n    ]\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/event/cf2d0092-d20b-4232-a015-5ce10146a56c",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"event",
+								"cf2d0092-d20b-4232-a015-5ce10146a56c"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token a335b7592b63c26237a7ed2feb063be10232f8ab",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"test event\",\r\n    \"description\": \"description\",\r\n    \"event_date\": 1687076362,\r\n    \"type\": \"ONLINE\",\r\n    \"max_seats\": 20,\r\n    \"status\": \"CREATED\",\r\n\r\n    \"location\": {\r\n        \"name\": \"Nellore\",\r\n        \"address\": \"Nellore\",\r\n        \"city\": \"Nellore\",\r\n        \"state\": \"Andhra Pradesh\"\r\n    },\r\n\r\n    \"booking_windows\": [\r\n        {\"booking_open_from\": 1684299000, \"booking_open_until\": 1684385400},\r\n        {\"booking_open_from\": 1684471800, \"booking_open_until\": 1684497000}\r\n        ],\r\n    \r\n    \"categories\": [\"SPORTS\"],\r\n    \"price_plans\": [\r\n        {\"price\": 100, \"type\": \"ECONOMY\"},\r\n        {\"price\": 200, \"type\": \"PREMIUM\"}\r\n    ]\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/event/event/cf2d0092-d20b-4232-a015-5ce10146a56c",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"event",
+										"event",
+										"cf2d0092-d20b-4232-a015-5ce10146a56c"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 13 Jun 2023 06:14:11 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.10"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "PUT, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "673"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"external_id\": \"cf2d0092-d20b-4232-a015-5ce10146a56c\",\n    \"created\": \"2023-06-12T18:25:48.881892Z\",\n    \"modified\": \"2023-06-13T06:14:11.349097Z\",\n    \"name\": \"test event\",\n    \"description\": \"description\",\n    \"event_date\": \"2023-06-18T08:19:22Z\",\n    \"type\": \"ONLINE\",\n    \"max_seats\": 20,\n    \"status\": \"CREATED\",\n    \"location\": {\n        \"name\": \"Andhra Pradesh\",\n        \"address\": \"Nellore\",\n        \"city\": \"Nellore\",\n        \"state\": \"Andhra Pradesh\"\n    },\n    \"price_plan\": [\n        {\n            \"price\": 100,\n            \"type\": \"ECONOMY\"\n        },\n        {\n            \"price\": 200,\n            \"type\": \"PREMIUM\"\n        }\n    ],\n    \"booking_windows\": [\n        {\n            \"booking_open_from\": \"2023-05-17T04:50:00Z\",\n            \"booking_open_until\": \"2023-05-18T04:50:00Z\"\n        },\n        {\n            \"booking_open_from\": \"2023-05-19T04:50:00Z\",\n            \"booking_open_until\": \"2023-05-19T11:50:00Z\"\n        }\n    ],\n    \"categories\": [\n        {\n            \"name\": 4\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Event",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token a335b7592b63c26237a7ed2feb063be10232f8ab",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/event/cf2d0092-d20b-4232-a015-5ce10146a56c",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"event",
+								"cf2d0092-d20b-4232-a015-5ce10146a56c"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Event",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token a335b7592b63c26237a7ed2feb063be10232f8ab",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/event/cf2d0092-d20b-4232-a015-5ce10146a56c",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"event",
+										"cf2d0092-d20b-4232-a015-5ce10146a56c"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 13 Jun 2023 07:14:40 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.10"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "673"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"external_id\": \"cf2d0092-d20b-4232-a015-5ce10146a56c\",\n    \"created\": \"2023-06-12T18:25:48.881892Z\",\n    \"modified\": \"2023-06-13T06:14:11.349097Z\",\n    \"name\": \"test event\",\n    \"description\": \"description\",\n    \"event_date\": \"2023-06-18T08:19:22Z\",\n    \"type\": \"ONLINE\",\n    \"max_seats\": 20,\n    \"status\": \"CREATED\",\n    \"location\": {\n        \"name\": \"Andhra Pradesh\",\n        \"address\": \"Nellore\",\n        \"city\": \"Nellore\",\n        \"state\": \"Andhra Pradesh\"\n    },\n    \"price_plan\": [\n        {\n            \"price\": 100,\n            \"type\": \"ECONOMY\"\n        },\n        {\n            \"price\": 200,\n            \"type\": \"PREMIUM\"\n        }\n    ],\n    \"booking_windows\": [\n        {\n            \"booking_open_from\": \"2023-05-17T04:50:00Z\",\n            \"booking_open_until\": \"2023-05-18T04:50:00Z\"\n        },\n        {\n            \"booking_open_from\": \"2023-05-19T04:50:00Z\",\n            \"booking_open_until\": \"2023-05-19T11:50:00Z\"\n        }\n    ],\n    \"categories\": [\n        {\n            \"name\": 4\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All Events For User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token a335b7592b63c26237a7ed2feb063be10232f8ab",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/event/user",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"event",
+								"user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Events For User",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token a335b7592b63c26237a7ed2feb063be10232f8ab",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/event/user",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"event",
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 13 Jun 2023 09:57:19 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.10"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1231"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"external_id\": \"cf2d0092-d20b-4232-a015-5ce10146a56c\",\n        \"name\": \"test event\",\n        \"description\": \"description\",\n        \"event_date\": \"2023-06-18T08:19:22Z\",\n        \"type\": \"ONLINE\",\n        \"available_seats\": 20,\n        \"status\": \"CREATED\",\n        \"location\": {\n            \"name\": \"Andhra Pradesh\",\n            \"address\": \"Nellore\",\n            \"city\": \"Nellore\",\n            \"state\": \"Andhra Pradesh\"\n        },\n        \"price_plan\": [\n            {\n                \"price\": 100,\n                \"type\": \"ECONOMY\"\n            },\n            {\n                \"price\": 200,\n                \"type\": \"PREMIUM\"\n            }\n        ],\n        \"booking_open\": false,\n        \"categories\": [\n            {\n                \"name\": 4\n            }\n        ]\n    },\n    {\n        \"external_id\": \"c3c5e0e4-b6f4-4431-bd26-0d66058ad114\",\n        \"name\": \"test event 2\",\n        \"description\": \"description\",\n        \"event_date\": \"2023-06-18T08:19:22Z\",\n        \"type\": \"ONLINE\",\n        \"available_seats\": 20,\n        \"status\": \"CREATED\",\n        \"location\": {\n            \"name\": \"Nellore\",\n            \"address\": \"Nellore\",\n            \"city\": \"Nellore\",\n            \"state\": \"Andhra Pradesh\"\n        },\n        \"price_plan\": [\n            {\n                \"price\": 200,\n                \"type\": \"PREMIUM\"\n            },\n            {\n                \"price\": 200,\n                \"type\": \"PREMIUM\"\n            }\n        ],\n        \"booking_open\": false,\n        \"categories\": []\n    },\n    {\n        \"external_id\": \"4df33dd7-a950-43ad-b283-d2f222ab3abc\",\n        \"name\": \"test event 4\",\n        \"description\": \"description\",\n        \"event_date\": \"2023-06-18T08:19:22Z\",\n        \"type\": \"ONLINE\",\n        \"available_seats\": 20,\n        \"status\": \"CREATED\",\n        \"location\": {\n            \"name\": \"Nellore\",\n            \"address\": \"Nellore\",\n            \"city\": \"Nellore\",\n            \"state\": \"Andhra Pradesh\"\n        },\n        \"price_plan\": [\n            {\n                \"price\": 200,\n                \"type\": \"SAME\"\n            },\n            {\n                \"price\": 200,\n                \"type\": \"SAME\"\n            }\n        ],\n        \"booking_open\": false,\n        \"categories\": []\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get An Event For User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token a335b7592b63c26237a7ed2feb063be10232f8ab",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/event/user/cf2d0092-d20b-4232-a015-5ce10146a56c",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"event",
+								"user",
+								"cf2d0092-d20b-4232-a015-5ce10146a56c"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get An Event For User",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token a335b7592b63c26237a7ed2feb063be10232f8ab",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/event/user/cf2d0092-d20b-4232-a015-5ce10146a56c",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"event",
+										"user",
+										"cf2d0092-d20b-4232-a015-5ce10146a56c"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 13 Jun 2023 10:04:08 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.10"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "421"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"external_id\": \"cf2d0092-d20b-4232-a015-5ce10146a56c\",\n    \"name\": \"test event\",\n    \"description\": \"description\",\n    \"event_date\": \"2023-06-18T08:19:22Z\",\n    \"type\": \"ONLINE\",\n    \"available_seats\": 20,\n    \"status\": \"CREATED\",\n    \"location\": {\n        \"name\": \"Andhra Pradesh\",\n        \"address\": \"Nellore\",\n        \"city\": \"Nellore\",\n        \"state\": \"Andhra Pradesh\"\n    },\n    \"price_plan\": [\n        {\n            \"price\": 100,\n            \"type\": \"ECONOMY\"\n        },\n        {\n            \"price\": 200,\n            \"type\": \"PREMIUM\"\n        }\n    ],\n    \"booking_open\": false,\n    \"categories\": [\n        {\n            \"name\": 4\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Ticket Booking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token a335b7592b63c26237a7ed2feb063be10232f8ab",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ticket_count\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/event/ticket/cf2d0092-d20b-4232-a015-5ce10146a56c",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"event",
+								"ticket",
+								"cf2d0092-d20b-4232-a015-5ce10146a56c"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ticket Booking",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token a335b7592b63c26237a7ed2feb063be10232f8ab",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ticket_count\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/event/ticket/cf2d0092-d20b-4232-a015-5ce10146a56c",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"event",
+										"ticket",
+										"cf2d0092-d20b-4232-a015-5ce10146a56c"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 13 Jun 2023 10:55:37 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.10"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "338"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"external_id\": \"19a9ba7e-3cec-46c6-9413-e9d152554644\",\n    \"created\": \"2023-06-13T10:55:37.100168Z\",\n    \"name\": \"test event\",\n    \"description\": \"description\",\n    \"event_date\": \"2023-06-18T08:19:22Z\",\n    \"type\": \"ONLINE\",\n    \"status\": \"CREATED\",\n    \"location\": {\n        \"name\": \"Andhra Pradesh\",\n        \"address\": \"Nellore\",\n        \"city\": \"Nellore\",\n        \"state\": \"Andhra Pradesh\"\n    },\n    \"categories\": [\n        {\n            \"name\": 4\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All Tickets of User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token a335b7592b63c26237a7ed2feb063be10232f8ab",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/event/ticket/bookedtickets",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"event",
+								"ticket",
+								"bookedtickets"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Tickets of User",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token a335b7592b63c26237a7ed2feb063be10232f8ab",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/event/ticket/bookedtickets",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"event",
+										"ticket",
+										"bookedtickets"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 13 Jun 2023 11:13:26 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.10"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "679"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"external_id\": \"19a9ba7e-3cec-46c6-9413-e9d152554644\",\n        \"created\": \"2023-06-13T10:55:37.100168Z\",\n        \"name\": \"test event\",\n        \"description\": \"description\",\n        \"event_date\": \"2023-06-18T08:19:22Z\",\n        \"type\": \"ONLINE\",\n        \"status\": \"CREATED\",\n        \"location\": {\n            \"name\": \"Andhra Pradesh\",\n            \"address\": \"Nellore\",\n            \"city\": \"Nellore\",\n            \"state\": \"Andhra Pradesh\"\n        },\n        \"categories\": [\n            {\n                \"name\": 4\n            }\n        ]\n    },\n    {\n        \"external_id\": \"88fd56c8-3861-4aab-8149-26221dda9181\",\n        \"created\": \"2023-06-13T10:56:08.042573Z\",\n        \"name\": \"test event\",\n        \"description\": \"description\",\n        \"event_date\": \"2023-06-18T08:19:22Z\",\n        \"type\": \"ONLINE\",\n        \"status\": \"CREATED\",\n        \"location\": {\n            \"name\": \"Andhra Pradesh\",\n            \"address\": \"Nellore\",\n            \"city\": \"Nellore\",\n            \"state\": \"Andhra Pradesh\"\n        },\n        \"categories\": [\n            {\n                \"name\": 4\n            }\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get Booked Tickets for an Event",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token a335b7592b63c26237a7ed2feb063be10232f8ab",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/event/ticket/cf2d0092-d20b-4232-a015-5ce10146a56c",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"event",
+								"ticket",
+								"cf2d0092-d20b-4232-a015-5ce10146a56c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
