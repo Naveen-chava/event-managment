@@ -7,7 +7,6 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 
 from common.abstract_test_setups import AbstractTestSetup
-from common.constants import EventStatusType
 
 
 class EventAdminAPI(APITestCase, AbstractTestSetup):
@@ -78,7 +77,6 @@ class EventAdminAPI(APITestCase, AbstractTestSetup):
 
         response = self.client.post(self.url, data=json.dumps(request_data), content_type="application/json")
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertEqual(response.data["message"], "CHECK constraint failed: event_event")
 
     def test_create_event_invalid_status(self):
         self.client.force_authenticate(user=self.user)

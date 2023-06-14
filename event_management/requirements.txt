@@ -5,3 +5,4 @@ python-decouple==3.7
 django-phonenumber-field[phonenumberslite]==7.1.0
 phonenumbers==8.13.13
 coverage==7.0.4
+psycopg2==2.9.5
