@@ -5,7 +5,10 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.authentication import TokenAuthentication
 
+from django.db.utils import IntegrityError
+
 from common.permissions import IsAdminUser
+from common.decorators import validate_admin_profile
 from services.event import (
     svc_event_create_event,
     svc_event_get_all_events_for_admin,
@@ -20,15 +23,20 @@ from services.event import (
 from event.models import Event
 
 
-class EventListView(generics.GenericAPIView):
+class EventAdminListView(generics.GenericAPIView):
     authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAdminUser]
+    # permission_classes = [IsAdminUser]
 
+    @validate_admin_profile
     def post(self, request, **kwargs):
         try:
             return Response(svc_event_create_event(request_data=request.data), status=status.HTTP_200_OK)
         except ValueError as e:
             return Response({"message": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        except IntegrityError as e:
+            return Response({"message": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        except KeyError as e:
+            return Response({"message": f"Invalid key {str(e)}"}, status=status.HTTP_400_BAD_REQUEST)
 
     def get(self, request, **kwargs):  # get all events
         try:
@@ -37,10 +45,11 @@ class EventListView(generics.GenericAPIView):
             return Response({"message": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 
-class EventDetailView(generics.GenericAPIView):
+class EventAdminDetailView(generics.GenericAPIView):
     authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAdminUser]
+    # permission_classes = [IsAdminUser]
 
+    @validate_admin_profile
     def put(self, request, event_id, **kwargs):
         try:
             return Response(

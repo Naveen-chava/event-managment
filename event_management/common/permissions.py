@@ -1,4 +1,6 @@
+from rest_framework import status
 from rest_framework.permissions import BasePermission
+from rest_framework.response import Response
 
 
 class IsAdminUser(BasePermission):
@@ -7,4 +9,7 @@ class IsAdminUser(BasePermission):
     """
 
     def has_permission(self, request, view):
-        return bool(request.user and request.user.staff_profile.is_admin)
+        try:
+            return bool(request.user and request.user.staff_profile.is_admin)
+        except AttributeError as e:
+            return Response({"message": str(e)}, status=status.HTTP_400_BAD_REQUEST)

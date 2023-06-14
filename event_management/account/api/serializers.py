@@ -27,13 +27,13 @@ class BaseUserSerializer(serializers.ModelSerializer):
 
 
 class StaffProfileSerializer(serializers.ModelSerializer):
-    user_profile = serializers.SerializerMethodField()
+    staff_profile = serializers.SerializerMethodField()
     is_staff = serializers.SerializerMethodField()
 
     class Meta:
         model = StaffProfile
         fields = (
-            "user_profile",
+            "staff_profile",
             "is_staff",
             "is_admin",
         )
@@ -41,5 +41,5 @@ class StaffProfileSerializer(serializers.ModelSerializer):
     def get_is_staff(self, obj: UserProfile) -> bool:
         return obj.user.is_staff
 
-    def get_user_profile(self, obj: UserProfile) -> dict:
+    def get_staff_profile(self, obj: UserProfile) -> dict:
         return BaseUserSerializer(obj.user, many=False).data

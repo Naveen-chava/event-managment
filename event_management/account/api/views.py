@@ -1,4 +1,6 @@
 from django.db.utils import IntegrityError
+from django.core.exceptions import ValidationError
+from django.contrib.auth import get_user_model
 
 from rest_framework import status
 from rest_framework import generics
@@ -11,6 +13,7 @@ from services.account import (
     svc_account_login_user,
 )
 
+User = get_user_model()
 
 class UserSignupView(generics.GenericAPIView): # create user account
     def post(self, request, **kwargs):
@@ -19,7 +22,9 @@ class UserSignupView(generics.GenericAPIView): # create user account
         except ValueError as e:
             return Response({"message": str(e)}, status=status.HTTP_400_BAD_REQUEST)
         except IntegrityError as e:
-            return Response({"message": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"message": "User already exists"}, status=status.HTTP_400_BAD_REQUEST)
+        except ValidationError as e:
+            return Response({"message": "Invalid email address"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class UserProfileView(generics.GenericAPIView): # create user profile
@@ -29,7 +34,9 @@ class UserProfileView(generics.GenericAPIView): # create user profile
         except ValueError as e:
             return Response({"message": str(e)}, status=status.HTTP_400_BAD_REQUEST)
         except IntegrityError as e:
-            return Response({"message": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"message": "User Profile already exists"}, status=status.HTTP_400_BAD_REQUEST)
+        except User.DoesNotExist as e:
+            return Response({"message": "User does not exist"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class StaffProfileView(generics.GenericAPIView): # create staff profile
@@ -39,7 +46,9 @@ class StaffProfileView(generics.GenericAPIView): # create staff profile
         except ValueError as e:
             return Response({"message": str(e)}, status=status.HTTP_400_BAD_REQUEST)
         except IntegrityError as e:
-            return Response({"message": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"message": "Staff Profile already exists"}, status=status.HTTP_400_BAD_REQUEST)
+        except User.DoesNotExist as e:
+            return Response({"message": "User does not exist"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class UserLoginView(generics.GenericAPIView): # login user -> user, staff
@@ -48,7 +57,7 @@ class UserLoginView(generics.GenericAPIView): # login user -> user, staff
             token = svc_account_login_user(request)
             return Response({"token": token}, status=status.HTTP_200_OK)
         except ValueError as e:
-            return Response({"message": str(e)}, status=status.HTTP_401_UNAUTHORIZED)
+            return Response({"message": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 
 # class UserLogoutView(generics.GenericAPIView):

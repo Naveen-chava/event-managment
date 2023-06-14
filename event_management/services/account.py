@@ -115,10 +115,10 @@ def svc_account_login_user(request: Request) -> None:
 
     user = authenticate(phone=phone, password=password)
 
-    token = _get_or_create_user_token(user)
-
     if not user:
         raise ValueError("Invalid phone or password")
+    
+    token = _get_or_create_user_token(user)
 
     login(request, user)
 

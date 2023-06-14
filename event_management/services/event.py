@@ -52,7 +52,7 @@ def _validate_create_event_request_data(request_data: dict):
 
 def _get_booking_open_from_and_booking_open_until(booking_window: dict, event: Event):
     if "booking_open_from" not in booking_window:
-        raise ValueError(f"booking_open_from missing in {booking_window}")
+        raise ValueError(f"booking_open_from missing")
 
     booking_open_from = booking_window["booking_open_from"]
     booking_open_until = booking_window.get("booking_open_until")
@@ -64,7 +64,7 @@ def _get_booking_open_from_and_booking_open_until(booking_window: dict, event: E
         event_date = _get_datetime_for_epoch_time(event_date)
 
     if booking_open_from > event_date:  # event.event_date:
-        raise ValueError("booking_window from_date cannot be greater than event_date")
+        raise ValueError("booking_open_from cannot be greater than event_date")
 
     if not booking_open_until:
         # if to_date is not available, use event's date as to_date
@@ -139,7 +139,7 @@ def svc_event_create_event(request_data: dict, serialized: bool = True) -> Union
 
         categories = request_data.get("categories", [])
         if categories:
-            categories = _create_categories(categories)
+            categories = _create_categories(categories, event)
 
         location = request_data.get("location")
         if location:
